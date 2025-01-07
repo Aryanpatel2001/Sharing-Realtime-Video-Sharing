@@ -8,6 +8,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import Sidebar from "@/components/global/sidebar";
+import GlobalHeader from "@/components/global/global-header";
 
 type Props = {
   params: { workspaceId: string };
@@ -40,8 +41,12 @@ const Layout = async ({ params: { workspaceId }, children }: Props) => {
 
   return (
     <HydrationBoundary state={dehydrate(query)}>
-      <div className="flex h-screen w-screen">
+      <div className="flex h-full w-screen  ">
         <Sidebar activeWorkspaceId={workspaceId} />
+        <div className="w-full pt-28 p-6 overflow-y-scroll overflow-x-hidden">
+          <GlobalHeader workspace={hasAccess.data.workspace} />
+          <div className="mt-4">{children}</div>
+        </div>
       </div>
     </HydrationBoundary>
   );
