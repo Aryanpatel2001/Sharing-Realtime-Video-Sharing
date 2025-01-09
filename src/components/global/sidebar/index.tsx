@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { getWorkSpaces } from "@/actions/workspace";
-import { useQueryData } from "@/hooks/userQueryData";
+import { useQueryData } from "@/hooks/useQueryData";
 import { NotificationsProps, WorkspaceProps } from "@/types/index.type";
 import Image from "next/image";
 import Modal from "../modal";
