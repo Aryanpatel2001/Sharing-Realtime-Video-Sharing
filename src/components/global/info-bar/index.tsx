@@ -9,7 +9,8 @@ type Props = {};
 
 const InfoBar = (props: Props) => {
   return (
-    <header className="pl-20 md:pl-[265px] fixed p-4 w-full flex items-center justify-between gap-4">
+    // <header className="pl-20 md:pl-[265px] fixed p-4 w-full flex items-center justify-between gap-4 ">
+    <header className="pl-20 md:pl-[265px] fixed p-4 w-full flex items-center justify-between gap-4 bg-[#111111]  shadow-md">
       <div className="flex gap-4 justify-center items-center border-2 rounded-full px-4 w-full max-w-lg">
         <Search size={25} className="text-[#707070]" />
         <Input
