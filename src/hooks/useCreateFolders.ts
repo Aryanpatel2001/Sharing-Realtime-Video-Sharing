@@ -1,10 +1,10 @@
-import { createFolders } from "@/actions/workspace";
+import { createFolder } from "@/actions/workspace";
 import { useMutationData } from "./useMutationData";
 
 export const useCreateFolders = (workspaceId: string) => {
   const { mutate } = useMutationData(
     ["create-folder"],
-    () => createFolders(workspaceId),
+    () => createFolder(workspaceId),
     "workspace-folders"
   );
 

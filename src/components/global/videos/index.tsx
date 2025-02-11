@@ -24,6 +24,8 @@ const Videos = ({ folderId, workspaceId, videosKey }: Props) => {
     status: 404,
     data: [],
   }) as VideosProps;
+
+  console.log("videos:", videos);
   return (
     <div className="flex flex-col gap-4 mt-4">
       <div className="flex items-center justify-between">

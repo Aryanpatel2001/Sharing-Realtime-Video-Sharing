@@ -18,6 +18,7 @@ type Props = {
 
 const page = async ({ params: { folderId, workspaceId } }: Props) => {
   const query = new QueryClient();
+
   await query.prefetchQuery({
     queryKey: ["folder-videos"],
     queryFn: () => getAllUserVideos(folderId),

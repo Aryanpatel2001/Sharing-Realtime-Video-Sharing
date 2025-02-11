@@ -32,7 +32,8 @@ const VideoCard = (props: Props) => {
 
   return (
     <Loader
-      state={props.processing}
+      state={""}
+      // state={props.processing}
       className=" bg-[#171717] flex justify-center items-center border-[1px] border-[#252525] rounded-xl"
     >
       <div className="  group overflow-hidden no-scrollbar cursor-pointer bg-[#171717] relative border-[1px] border-[#252525] flex flex-col rounded-xl">
@@ -50,7 +51,7 @@ const VideoCard = (props: Props) => {
           />
         </div>
         <Link
-          href={`/preview/${props.id}`}
+          href={`/dashboard/${props.workspaceId}/video/${props.id}`}
           className="hover:bg-[#252525] transition duration-150 flex flex-col justify-between h-full"
         >
           <video

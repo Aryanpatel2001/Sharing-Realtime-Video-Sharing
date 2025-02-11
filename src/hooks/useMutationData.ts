@@ -27,7 +27,10 @@ export const useMutationData = (
       );
     },
     onSettled: async () => {
-      return await client.invalidateQueries({ queryKey: [queryKey] });
+      return await client.invalidateQueries({
+        queryKey: [queryKey],
+        exact: true,
+      });
     },
   });
   return { mutate, isPending };

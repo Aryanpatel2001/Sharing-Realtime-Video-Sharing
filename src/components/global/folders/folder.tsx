@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import Loader from "../loader";
 import FolderDuotone from "@/components/icons/folder-duotone";
 import { useMutationData, useMutationDataState } from "@/hooks/useMutationData";
-import { renameFolder } from "@/actions/workspace";
+import { renameFolders } from "@/actions/workspace";
 import { Input } from "@/components/ui/input";
 
 type Props = {
@@ -28,7 +28,7 @@ const Folder = ({ id, name, optimistic, count }: Props) => {
   //optimistic
   const { mutate, isPending } = useMutationData(
     ["rename-folders"],
-    (data: { name: string }) => renameFolder(id, data.name),
+    (data: { name: string }) => renameFolders(id, data.name),
     "workspace-folders",
     Renamed
   );
@@ -63,34 +63,34 @@ const Folder = ({ id, name, optimistic, count }: Props) => {
         "flex hover:bg-neutral-800 cursor-pointer transition duration-150 items-center gap-2 justify-between min-w-[250px] py-4 px-4 rounded-lg  border-[1px]"
       )}
     >
-      {/* <Loader state={isPending}> */}
-      <div className="flex flex-col gap-[1px]">
-        {onRename ? (
-          <Input
-            onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-              updateFolderName(e);
-            }}
-            autoFocus
-            placeholder={name}
-            className="border-none text-base w-full outline-none text-neutral-300 bg-transparent p-0"
-            ref={inputRef}
-          />
-        ) : (
-          <p
-            onClick={(e) => e.stopPropagation()}
-            className="text-neutral-300"
-            onDoubleClick={handleNameDoubleClick}
-          >
-            {latestVariables &&
-            latestVariables.status === "pending" &&
-            latestVariables.variables.id === id
-              ? latestVariables.variables.name
-              : name}
-          </p>
-        )}
-        <span className="text-sm text-neutral-500">{count || 0} videos</span>
-      </div>
-      {/* </Loader> */}
+      <Loader state={isPending}>
+        <div className="flex flex-col gap-[1px]">
+          {onRename ? (
+            <Input
+              onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+                updateFolderName(e);
+              }}
+              autoFocus
+              placeholder={name}
+              className="border-none text-base w-full outline-none text-neutral-300 bg-transparent p-0"
+              ref={inputRef}
+            />
+          ) : (
+            <p
+              onClick={(e) => e.stopPropagation()}
+              className="text-neutral-300"
+              onDoubleClick={handleNameDoubleClick}
+            >
+              {latestVariables &&
+              latestVariables.status === "pending" &&
+              latestVariables.variables.id === id
+                ? latestVariables.variables.name
+                : name}
+            </p>
+          )}
+          <span className="text-sm text-neutral-500">{count || 0} videos</span>
+        </div>
+      </Loader>
       <FolderDuotone />
     </div>
   );

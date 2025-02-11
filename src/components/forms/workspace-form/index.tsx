@@ -8,13 +8,12 @@ type Props = {};
 
 const WorkspaceForm = (props: Props) => {
   const { errors, isPending, onFormSubmit, register } = useCreateWorkspace();
-
   return (
     <form onSubmit={onFormSubmit} className="flex flex-col gap-y-3">
       <FormGenerator
         register={register}
         name="name"
-        placeholder={"WorkSpace Name"}
+        placeholder={"Workspace Name"}
         label="Name"
         errors={errors}
         inputType="input"

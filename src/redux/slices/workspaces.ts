@@ -14,7 +14,7 @@ const initialState: initialStateProps = {
 
 export const Workspaces = createSlice({
   name: "workspaces",
-  initialState: initialState,
+  initialState,
   reducers: {
     WORKSPACES: (state, action: PayloadAction<initialStateProps>) => {
       return { ...action.payload };

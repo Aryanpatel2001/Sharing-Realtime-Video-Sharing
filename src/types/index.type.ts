@@ -1,3 +1,23 @@
+// export type WorkspaceProps = {
+//   data: {
+//     subscription: {
+//       plan: "FREE" | "PRO";
+//     } | null;
+//     workspace: {
+//       id: string;
+//       name: string;
+//       type: "PUBLIC" | "PERSONAL";
+//     }[];
+//     members: {
+//       WorkSpace: {
+//         id: string;
+//         name: string;
+//         type: "PUBLIC" | "PERSONAL";
+//       };
+//     }[];
+//   };
+// };
+
 export type WorkspaceProps = {
   data: {
     subscription: {
@@ -14,6 +34,11 @@ export type WorkspaceProps = {
         name: string;
         type: "PUBLIC" | "PERSONAL";
       };
+    }[];
+    publicWorkspaces: {
+      id: string;
+      name: string;
+      type: "PUBLIC";
     }[];
   };
 };
@@ -79,4 +104,47 @@ export type VideoProps = {
     summery: string | null;
   };
   author: boolean;
+};
+
+export type CommentRepliesProps = {
+  id: string;
+  comment: string;
+  createdAt: Date;
+  commentId: string | null;
+  userId: string | null;
+  videoId: string | null;
+  User: {
+    id: string;
+    email: string;
+    firstname: string | null;
+    lastname: string | null;
+    createdAt: Date;
+    clerkid: string;
+    image: string | null;
+    trial: boolean;
+    firstView: boolean;
+  } | null;
+};
+
+export type VideoCommentProps = {
+  data: {
+    User: {
+      id: string;
+      email: string;
+      firstname: string | null;
+      lastname: string | null;
+      createdAt: Date;
+      clerkid: string;
+      image: string | null;
+      trial: boolean;
+      firstView: boolean;
+    } | null;
+    reply: CommentRepliesProps[];
+    id: string;
+    comment: string;
+    createdAt: Date;
+    commentId: string | null;
+    userId: string | null;
+    videoId: string | null;
+  }[];
 };
